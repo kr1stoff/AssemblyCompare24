@@ -2,9 +2,10 @@
 # cgMLST等位基因, 样本, 分组 热图
 ################################################################################
 library(tidyverse)
+library(RColorBrewer)
 
 
-df <- read_tsv('cgMLST.tsv')
+df <- read_tsv('data/cgMLST.tsv')
 
 # 去除文件名和 cgMLST 中的 '.fasta'
 df$FILE <- gsub('.fasta', '', df$FILE)
@@ -28,7 +29,7 @@ mygrp <- sapply(strsplit(colnames(df), '_'), function(x) x[2]) %>%
   as.numeric()
 colSide <- brewer.pal(9, "Set1")[mygrp]
 
-png('cgmlst.png', width = 800, height = 1200, res = 150)
+png('figure/cgmlst.png', width = 800, height = 1200, res = 150)
 heatmap(df, Rowv = NA, ColSideColors = colSide, 
              xlab = 'Sample', ylab = 'Allele', main = 'cgMLST',
              margins = c(8,6))
