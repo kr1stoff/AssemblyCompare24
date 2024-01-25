@@ -36,7 +36,7 @@ names(group_colors) <- unique(group)
 ggtree(tree, ladderize = FALSE, branch.length = "none", aes(color=group)) +
   geom_tiplab(size=3) +
   labs(title = 'cgSNP Phylogenetic Tree') +
-  # 限制进化树高度宽度大小
+  # 限制进化树高度宽度
   coord_cartesian(xlim = c(0, 10), ylim = c(0, 24)) +
   # 分组颜色
   scale_color_manual(values = group_colors, breaks = names(group_colors)) +
